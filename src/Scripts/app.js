@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
         let datalist = JSON.parse(localStorage.getItem('time-container')) || [];
         datalist.forEach(data => {
             let newTimeContainer = document.createElement('span');
-            newTimeContainer.classList.add("time-container");
-            newTimeContainer.innerHTML = `<strong>id:</strong> ${data.id} - <strong>timestamp:</strong> ${data.timestamp}`;
+            newTimeContainer.classList.add("newtime-container");
+            newTimeContainer.innerHTML = `<strong>id:</strong> ${data.id}  <strong>timestamp:</strong> ${data.timestamp}`;
 
             const delete_btn = document.createElement('button');
             delete_btn.setAttribute('id', 'delete-timestamp');
@@ -63,8 +63,8 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem("time-container", JSON.stringify(datalist));
 
         let newTimeContainer = document.createElement('span');
-        newTimeContainer.classList.add("time-container");
-        newTimeContainer.innerHTML = `<strong>id:</strong> ${data.id} - <strong>timestamp:</strong> ${data.timestamp}`;
+        newTimeContainer.classList.add("newtime-container");
+        newTimeContainer.innerHTML = `<strong>id:</strong> ${data.id}  <strong>timestamp:</strong> ${data.timestamp}`;
 
         const delete_btn = document.createElement('button');
         delete_btn.setAttribute('id', 'delete-timestamp');

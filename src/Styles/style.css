@@ -57,6 +57,16 @@ body {
     margin: 10px 0;
 }
 
+.newtime-container {
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: gold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
 .btn {
     color: aliceblue;
     padding: 10px 20px;
@@ -95,7 +105,7 @@ body {
 /* Media query for smaller screens */
 @media (max-width: 600px) {
     .wrapper {
-        width: 100vw;
+        width: 90vw;
         padding: 5px;
     }
 
@@ -103,9 +113,17 @@ body {
         padding: 15px;
     }
 
-    .time-container {
+    .newtime-container {
         font-size: 18px;
         padding: 8px 15px;
+
+
+        background-color: gold;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
     }
 
     .btn {
