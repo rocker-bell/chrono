@@ -22,10 +22,33 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     updateTime(); // Initial call to display the time immediately
-    let intervalId = setInterval(updateTime, 1000); // Update the time every second
+    setInterval(updateTime, 1000); // Update the time every second
+
+    function loadTimestamps() {
+        let datalist = JSON.parse(localStorage.getItem('time-container')) || [];
+        datalist.forEach(data => {
+            let newTimeContainer = document.createElement('span');
+            newTimeContainer.classList.add("time-container");
+            newTimeContainer.innerHTML = `<strong>id:</strong> ${data.id} - <strong>timestamp:</strong> ${data.timestamp}`;
+
+            const delete_btn = document.createElement('button');
+            delete_btn.setAttribute('id', 'delete-timestamp');
+            delete_btn.textContent = "Delete";
+            delete_btn.addEventListener('click', function () {
+                datalist = datalist.filter(item => item.id !== data.id);
+                localStorage.setItem("time-container", JSON.stringify(datalist));
+                content3.removeChild(newTimeContainer);
+            });
+
+            newTimeContainer.appendChild(delete_btn);
+            content3.appendChild(newTimeContainer);
+        });
+    }
+
+    loadTimestamps(); // Load saved timestamps on page load
 
     stop_btn.addEventListener('click', function () {
-        clearInterval(intervalId); // Stop the interval
+        let datalist = JSON.parse(localStorage.getItem('time-container')) || [];
         let date = new Date();
         let timestamp = date.toLocaleString('en-us', {
             year: 'numeric',
@@ -35,17 +58,24 @@ document.addEventListener('DOMContentLoaded', function () {
             minute: 'numeric',
             second: 'numeric'
         });
+        let data = { id: datalist.length + 1, timestamp: timestamp };
+        datalist.push(data);
+        localStorage.setItem("time-container", JSON.stringify(datalist));
+
         let newTimeContainer = document.createElement('span');
         newTimeContainer.classList.add("time-container");
-        newTimeContainer.innerHTML = timestamp;
-        
+        newTimeContainer.innerHTML = `<strong>id:</strong> ${data.id} - <strong>timestamp:</strong> ${data.timestamp}`;
+
         const delete_btn = document.createElement('button');
         delete_btn.setAttribute('id', 'delete-timestamp');
-        delete_btn.textContent = "Delete"
-        delete_btn.addEventListener('click', function() {
-            content3.removeChild(newTimeContainer)
-        })
-        newTimeContainer.appendChild(delete_btn)
+        delete_btn.textContent = "Delete";
+        delete_btn.addEventListener('click', function () {
+            datalist = datalist.filter(item => item.id !== data.id);
+            localStorage.setItem("time-container", JSON.stringify(datalist));
+            content3.removeChild(newTimeContainer);
+        });
+
+        newTimeContainer.appendChild(delete_btn);
         content3.appendChild(newTimeContainer);
     });
 });
