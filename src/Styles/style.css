@@ -39,3 +39,55 @@ body {
     align-items: center;
 
 }
+
+.content2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.time-container {
+    padding: 10px 20px;
+    font-size: 30px;
+    background-color: gold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    color: aliceblue;
+    padding:  10px 30px;
+    border-radius: 50px;
+    font-size: larger;
+}
+
+.btn:hover {
+    color: yellow;
+}
+
+#start-btn {
+    background-color: green;
+}
+
+#stop-btn {
+    background-color: red;
+}
+
+.content3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+#delete-timestamp {
+    padding: 5px 15px;
+    margin: 0 30px;
+    font-size: large;
+    background-color: red;
+    color: yellow;
+}
